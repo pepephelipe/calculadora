@@ -1,6 +1,5 @@
 
 body {
-   /*font: 24px Helvetica;*/
    width: 100%;
    font-size: 16px;
    background: #000;
@@ -33,27 +32,26 @@ h1, h2, h3, h4 {
   color: white;
   text-transform: uppercase;
 } 
- .gold {
+.gold {
   color:  #ffd700;
  }
   header, footer {
    display: block;
-   /*border: 1px solid #eebb55;
-   border-radius: 7pt;*/
-   }
+}
 .headerlog {
   padding-top: 30px;
   padding-right: 30px;
   padding-left: 50px;
   padding-bottom: 2px;
 }
-
+/*
 #contenitore {
   display:table; width:100%; 
   height:100%;
   min-width:100%;
   min-height:100%;
 }
+*/
 .martop {
   margin-top:25px !important;   
 }

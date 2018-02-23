@@ -9,11 +9,13 @@
   var memoria=""; // con tester=0 memoriza la base X 
   var memoria1="";
   var cumulo=0; //sirve para memorizar los calculos.
-  var testmas=0;
+  var testmas=1;
   var testmen=0;
   var testper=0;
   var testdiv=0;
   var contaset=0;
+  var contaplus=0;
+  var contamenos=0;
   // inicialización " body onload"
   function inic ()   {
   	num = document.getElementById("num");
@@ -28,19 +30,20 @@
   	tester=0;
   	memoria="";
   	memoria1="";
-  	testmas=0;
+  	testmas=1;
   	testmen=0;
   	testper=0;
   	testdiv=0;
   	contaset=0;
+  	contaplus=0;
+    contamenos=0;
   	document.getElementById("num").style.color="black"; //pone en negro el color del input 
 	document.getElementById("_y").style.color="white";
 	document.getElementById("num").style.color="black";
 	document.getElementById("_xy").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,0.8))";
-	document.getElementById("_plus").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-	document.getElementById("_meno").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-	document.getElementById("_tot").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-
+ 	document.getElementById("_plus").style.border = "none";
+ 	document.getElementById("_meno").style.border = "none";
+ 	document.getElementById("_tot").style.border = "none"; 
   } 
   //raiz cuadrada 
   function cuadrado() {
@@ -191,9 +194,11 @@
   	num.value=cumulo;
   	testmas=1;
   	contaset=1;
-  	document.getElementById("_plus").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
-  	document.getElementById("_meno").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
- 	document.getElementById("_tot").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
+  	contaplus ++;
+  	//document.getElementById("_plus").style.bordercolor="red";
+ 	document.getElementById("_plus").style.border = "thick solid #0000FF";
+ 	document.getElementById("_meno").style.border = "thick solid #0000FF";
+ 	document.getElementById("_tot").style.border = "thick solid #0000FF";
   }
   function _menos() {
     var pas2=0;
@@ -202,15 +207,16 @@
     if (pas2==="errore"){return;}
     //alert("pas2 dopo verifica: " +pas2);
   	//alert("Cumulo: " + cumulo);
-  	cumulo -= pas2;
+  	if (contaset===1) {	cumulo -= pas2;}
+  	if (contaset===2 || contamenos===0) {cumulo = pas2;};
   	//alert("Cumulo dopo la somma: " + cumulo);
+  	contamenos++;
   	num.value=cumulo;
   	testmas=1;
-  	contaset=1;
-  	document.getElementById("_plus").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
-  	document.getElementById("_meno").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
- 	document.getElementById("_tot").style.background="linear-gradient(to top, rgba(244,252,110,0.1), rgba(244,252,110,1))";
-  }
+  	contaset=2;
+ 	document.getElementById("_plus").style.border = "thick solid #0000FF";
+ 	document.getElementById("_meno").style.border = "thick solid #0000FF";
+ 	document.getElementById("_tot").style.border = "thick solid #0000FF";  }
   function _per() {
   	if (contaset===1) {
   		    var pas3=0;
@@ -262,13 +268,43 @@
   	testdiv=1;
   }  
   function total() {
-  	/*if () {
-
-  	}*/
-	document.getElementById("_plus").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-	document.getElementById("_meno").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-	document.getElementById("_tot").style.background="linear-gradient(to top, rgba(255,160,0,0.1), rgba(255,160,0,1))";
-  }
+  	var pas1=0;
+  	pas1=num.value;
+  	pas1=_verifica(pas1);
+  	if (pas1==="errore"){return;}
+  	if (contaset===1) {
+  		  cumulo += pas1;
+  		//alert("Cumulo dopo la somma: " + cumulo);
+  	      num.value=cumulo;
+  	      testmas=1;
+  	      contaset=0;
+  	}
+  	if (contaset===2) {
+	  	cumulo -= pas1;
+	  	//alert("Cumulo dopo la somma: " + cumulo);
+	  	num.value=cumulo;
+	  	testmas=1;
+	  	contaset=2;
+  	}
+   	if (contaset===3) {
+  		  cumulo *= pas1;
+  		//alert("Cumulo dopo la somma: " + cumulo);
+  	      num.value=cumulo;
+  	      testmas=1;
+  	      contaset=0;
+  	}
+  	if (contaset===4) {
+  		  cumulo /= pas1;
+  		//alert("Cumulo dopo la somma: " + cumulo);
+  	      num.value=cumulo;
+  	      testmas=1;
+  	      contaset=0;
+  	}
+  	cumulo=0;  	
+ 	document.getElementById("_plus").style.border = "none";
+ 	document.getElementById("_meno").style.border = "none";
+ 	document.getElementById("_tot").style.border = "none";  
+ }
 	//esta funcion me sirve para controlar si la variable es un numero. 
 	//si no es un numero, verifica si tiene el punto del decimal y separa las dos partes
 	//antes de convertir con parseInt que nio funciona con los decimales.
