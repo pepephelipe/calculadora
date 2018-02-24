@@ -14,14 +14,14 @@
 <section>
 	<div style="width: 100%;" >
 		<article>
-			<div class="rounded" style="width: 280px; height: 490px; background-color: #312828; margin: auto;">
+			<div class="rounded" style="width: 280px; height: 520px; background-color: #312828; margin: auto;">
 				<div id="display" style="box-sizing: border-box; width:280px; height: 40px; display: inline-block; padding: 0px!important; font-family: DS-Digital; font-size: 2.4em; text-align: right; color: black;line-height: 1 !important;">
 					<input type="text" id="num">
 				</div>
 				<div style="margin-top: 25px;">
 					<div style="float:left;margin-left:10px;width:280px;">
-						<div class="bot0 gordo"><button id="_c" class="button" onclick="vaciar()">C</button></div>
-						<div class="bot0 gordo" style="font-size: 1.2em"><button id="_ce" class="button" onclick="_ce()">Ce</button></div>
+						<div class="bot0 gordo" style="font-size: 1.2em; color: red !important;"><button id="_c" class="button" onclick="vaciar()">C</button></div>
+						<div class="bot0 gordo" style="font-size: 1.2em; color: red !important;"><button id="_ce" class="button" onclick="_ce()">Ce</button></div>
 						<div class="bot0"><button id="_x2" class="button" onclick="cuadrado()">x<sup>2</sup></button></div>	
 						<div class="bot0"><button id="_1x" class="button" onclick="invers()">1/x</button></div>
 						
@@ -31,9 +31,17 @@
 						<div class="bot0"><button id="_sqr" class="button" onclick="raiz()">sqrt(x)</button></div>
 						<div class="bot0"><button id="_rx" class="button" onclick="round()">R(x)</button></div>	
 						<div class="bot0"><button id="_xy" class="button" onclick="espon()">x<sup id="_y">y</sup></button></div>
-						<div class="bot0"><button id="_mm" class="button" onclick="masomenos()">+/<sup>-</sup></button></div>
+						<div class="bot0"><button id="_tan" class="button" onclick="tang()" >tan</button></div>
 						
-					</div>						
+					</div>	
+					<div style="float:left;margin-left:10px;width:280px;">
+						<div class="bot0"><button id="_sin" class="button" onclick="seno()">sin</button></div>
+						<div class="bot0"><button id="_cos" class="button" onclick="coseno()">cos</button></div>				
+						<div class="bot0"><button id="_par1" class="button" onclick="_par1()">(</button></div>
+						<div class="bot0"><button id="_par2" class="button" onclick="_par2()">)</button></div>	
+
+						
+					</div>											
 					<p style="height:15px;">&nbsp;</p>
 					<div style="float:left;margin-left:10px;width:280px;">
 						<div class="bot0"><button id="_7" class="button" onclick="_7()">7</button></div>
@@ -45,21 +53,21 @@
 						<div class="bot0"><button id="_4" class="button" onclick="_4()">4</button></div>	
 						<div class="bot0"><button id="_5" class="button" onclick="_5()">5</button></div>
 						<div class="bot0"><button id="_6" class="button" onclick="_6()">6</button></div>
-						<div class="bot0 gordo" style="font-size: 1.2em"><button id="_div" class="button">&divide;</button></div>
+						<div class="bot0 gordo" style="font-size: 1.2em"><button id="_div" class="button" onclick="_div()">&divide;</button></div>
 					</div>	
 					<div style="float:left;margin-left:10px;width:280px;">
 						<div class="bot0"><button id="_1" class="button" onclick="_1()">1</button></div>
 						<div class="bot0"><button id="_2" class="button" onclick="_2()">2</button></div>
 						<div class="bot0"><button id="_3" class="button" onclick="_3()">3</button></div>
-						<div class="bot0 gordo" style="font-size: 1.2em"><button id="_meno" class="button" onclick="_menos()">-</button></div>
+						<div class="bot0 gordo" style="font-size: 1.2em"><button id="_meno" class="button" onclick="_tastomeno()">-</button></div>
 					</div>						
 					<div style="float:left;margin-left:10px;width:280px;">
 						<div class="bot0 gordo"><button id="_punto" class="button" onclick="_punto()">.</button></div>
 						<div class="bot0 gordo"><button id="_0" class="button" onclick="_0()">0</button></div>
-						<div class="bot2 gordo" style="font-size: 1.2em"><button id="_plus" class="button" onclick="_mas()">+</button></div>
+						<div class="bot2 gordo" style="font-size: 1.2em"><button id="_plus" class="button" onclick="_tastopiu()">+</button></div>
 					</div>
 					<div style="float:left;margin-left:10px;width:280px;">
-						<div class="bot3 gordo"><button id="_tot" class="button" onclick="total()">=</button></div>
+						<div class="bot3 gordo"><button id="_tot" class="button" onclick="calcola()">=</button></div>
 					</div>
 																				
 				</div>
